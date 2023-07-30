@@ -23,7 +23,7 @@ fun main() = with(BufferedReader(InputStreamReader(System.`in`))) {
         fun bfs(x: Int, y: Int) {
             var queue = LinkedList<Pair<Int, Int>>()
             queue.offer(Pair(x, y))
-            while (!queue.isEmpty()) {
+            while (queue.isNotEmpty()) {
                 var cur = queue.poll()
 
                 for (d in 0..3) {
