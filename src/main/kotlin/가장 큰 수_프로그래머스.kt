@@ -1,27 +1,13 @@
 class Solution {
     fun solution(numbers: IntArray): String {
-        var answer = "0"
-
-        var temp = arrayOf<String>()
-        numbers.forEach {
-            temp+=it.toString()
+        val nums = numbers.map { it.toString() }
+        val sortedNums = nums.sortedWith {
+                a, b -> (b + a).compareTo(a + b)
         }
+        val result = sortedNums.joinToString("")
 
-        temp.sortWith(Comparator{ o1, o2 ->
-            when{
-                o1.length==o2.length -> o2.compareTo(o1)
-                else -> (o2+o1).compareTo(o1+o2)
-            }
-        })
+        // 결과가 "0"으로 시작하는 경우 처리
+        return if (result.startsWith("0")) "0" else result
 
-        if(temp[0]=="0"){
-            return answer
-        }else{
-            answer=""
-            temp.forEach {
-                answer += it
-            }
-        }
-        return answer
     }
 }
